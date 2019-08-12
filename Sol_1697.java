@@ -26,6 +26,8 @@ public class Sol_1697 {
 		while(!q.isEmpty())
 		{
 			int size = q.size();
+			if(count > min)
+				break;
 			for(int i = 0; i < size; i++)
 			{
 				int temp = q.poll();
@@ -36,25 +38,33 @@ public class Sol_1697 {
 						min = count;
 					break;
 				}
-				if(temp * 2 <= 10000)
+				
+				if(temp * 2 <= 100000)
 				{
 					if(!visited[temp * 2])
-						{q.offer(temp * 2);}
+						{q.offer(temp * 2);
+						visited[temp * 2] = true;
+						}
 				}
-				if(temp + 1 <= 10000)
+				if(temp + 1 <= 100000)
 				{
 					if(!visited[temp + 1])
-					{q.offer(temp + 1);}
+					{q.offer(temp + 1);
+					visited[temp + 1] = true;
+					}
 				}
 				if(temp - 1 >= 0)
 				{
 					if(!visited[temp - 1])
-					{q.offer(temp - 1);}
+					{q.offer(temp - 1);
+					visited[temp - 1] = true;
+					}
 				}
 			}
 			count ++;
 			
 		}
+		q.clear();
 	}
 }
 /*
